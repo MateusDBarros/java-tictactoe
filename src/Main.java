@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -7,10 +8,17 @@ public class Main {
         char[][] board = new char[3][3];
 
         Scanner scanner = new Scanner(System.in);
-
+        Random random = new Random();
         initializeBoard(board);
         printBoard(board);
 
+        final char X = 'X';
+        final char O = 'O';
+
+        while (!winner(X, O, board) && emptySpace(board)) {
+            int turn = random.nextInt(2);
+            if ()
+        }
 
 
     }
@@ -72,7 +80,7 @@ public class Main {
         }
 
         // Check diagonals
-        if (board[0][0] == p && board[1][1] == p && board[2[2] == p) {
+        if (board[0][0] == p && board[1][1] == p && board[2][2] == p) {
             System.out.println("Parabens, o voce venceu!!");
             return true;
         }
@@ -106,8 +114,19 @@ public class Main {
                 playerTurn(board, scanner, j);
             }
         }
-
     }
+
+    public static void computerTurn(char[][] board,Random random, char c) {
+
+        int line = random.nextInt(3);
+        int column = random.nextInt(3);
+
+        if (board[line][column] == ' ')
+            board[line][column] = c;
+        else
+            computerTurn(board, random, c);
+    }
+
 }
 
 // Define a ordem a ser jogada e as opçoes
